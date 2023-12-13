@@ -1,7 +1,9 @@
+/* eslint-disable react/no-unknown-property */
 import { Suspense, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser';
 import { Canvas } from '@react-three/fiber';
 import Fox from '../models/Fox';
+import Loader from '../components/Loader'
 
 const Contact = () => {
 
@@ -116,10 +118,19 @@ const Contact = () => {
         <Canvas
           camera={{
             position: [0, 0, 5],
+            fov: 75,
+            near: 0.1,
+            far: 1000
           }}
         >
-          <Suspense fallback={null}>
-            <Fox />
+          <directionalLight intensity={2.5} position={[0, 0, 1]} />
+          <ambientLight intensity={0.5} />
+          <Suspense fallback={<Loader/>}>
+            <Fox 
+              position={[0.5, 0.35, 0]}
+              rotation={[12.6, -0.6, 0]}
+              scale={[0.5, 0.5, 0.5]}
+            />
           </Suspense>
         </Canvas>
       </div>
