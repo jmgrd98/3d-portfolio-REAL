@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser';
 import { Canvas } from '@react-three/fiber';
 import Fox from '../models/Fox';
 import Loader from '../components/Loader'
+import useArlet from '../hooks/useArlet';
 
 const Contact = () => {
 
@@ -17,6 +18,8 @@ const Contact = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [currentAnimation, setCurrentAnimation] = useState('idle');
+
+  const { alert, showAlert, hideAlert } = useArlet();
 
   const handleChange = (e) => {
     setForm({...form, [e.target.name]: e.target.value});
