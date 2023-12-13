@@ -19,7 +19,7 @@ const useArlet = () => {
         type: 'danger'
     });
 
-  return {alert, showAlert, hideAlert}
+  return {alert, showAlert, setAlert, hideAlert}
 }
 
 export default useArlet
