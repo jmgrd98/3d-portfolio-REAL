@@ -12,6 +12,14 @@ const Contact = () => {
 
   };
 
+  const handleFocus = () => {
+
+  };
+
+  const handleBlur = () => {
+
+  };
+
   return (
     <section className='relative flex lg:flex-row flex-col max-container'>
       <div className='flex-1 min-w-[50%] flex flex-col'>
@@ -28,6 +36,36 @@ const Contact = () => {
               required
               value={form.name}
               onChange={handleChange}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+            />
+          </label>
+          <label className='text-black-500 font-semibold'>
+            Email
+            <input
+              type='text'
+              name='email'
+              className='input'
+              placeholder='john@email.com'
+              required
+              value={form.email}
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+            />
+          </label>
+          <label className='text-black-500 font-semibold'>
+            Your message
+            <textarea
+              rows={4}
+              name='message'
+              className='input'
+              placeholder='Let me know how I can help you!'
+              required
+              value={form.message}
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
             />
           </label>
         </form>
