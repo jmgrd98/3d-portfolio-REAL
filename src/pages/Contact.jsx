@@ -3,7 +3,8 @@ import { Suspense, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser';
 import { Canvas } from '@react-three/fiber';
 import Fox from '../models/Fox';
-import Loader from '../components/Loader'
+import Loader from '../components/Loader';
+import Alert from '../components/Alert';
 import useArlet from '../hooks/useArlet';
 
 const Contact = () => {
@@ -19,7 +20,7 @@ const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentAnimation, setCurrentAnimation] = useState('idle');
 
-  const { alert, showAlert, hideAlert } = useArlet();
+  const { alert, setAlert, showAlert, hideAlert } = useArlet();
 
   const handleChange = (e) => {
     setForm({...form, [e.target.name]: e.target.value});
@@ -52,19 +53,33 @@ const Contact = () => {
       ).then(() => {
         setIsLoading(false);
 
+        setAlert({
+          show: true,
+          text: 'Message sent successfully!',
+          type: 'success'
+        });
+
         setTimeout(() => {
+          hideAlert();
           setCurrentAnimation('idle');
           setForm({name: '', email: '', message: ''});
         }, [3000]);
       }).catch((error) => {
         setIsLoading(false);
         setCurrentAnimation('idle');
-        console.log(error);
+        
+        setAlert({
+          show: true,
+          text: "I didn't receive your message!",
+          type: 'danger'
+        });
       })
   };
 
   return (
     <section className='relative flex lg:flex-row flex-col max-container'>
+
+      {alert.show && <Alert {...alert} />}
       <div className='flex-1 min-w-[50%] flex flex-col'>
         <h1 className='head-text'>Get in touch</h1>
 
