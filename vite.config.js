@@ -9,4 +9,7 @@ export default defineConfig({
       external: ['react-router-dom'],
     },
   },
+  esbuild: {
+    target: 'es2015',
+  },
 })
