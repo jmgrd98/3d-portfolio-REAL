@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import { Suspense, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser';
 import { Canvas } from '@react-three/fiber';
@@ -6,6 +5,8 @@ import Fox from '../models/Fox';
 import Loader from '../components/Loader';
 import Alert from '../components/Alert';
 import useArlet from '../hooks/useArlet';
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
 
@@ -38,7 +39,12 @@ const Contact = () => {
     e.preventDefault();
     setIsLoading(true);
     setCurrentAnimation('hit');
-    console.log(process.env.VITE_APP_EMAILJS_SERVICE_ID);
+
+    try {
+      
+    } catch (error) {
+      toast.warn('Preencha todos os campos!')
+    }
     emailjs.send(
         process.env.VITE_APP_EMAILJS_SERVICE_ID,
         process.env.VITE_APP_EMAILJS_TEMPLATE_ID,
@@ -159,6 +165,17 @@ const Contact = () => {
           </Suspense>
         </Canvas>
       </div>
+      <ToastContainer
+                position="bottom-left"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={true}
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable={true}
+                pauseOnHover={true}
+            />
     </section>
   )
 }

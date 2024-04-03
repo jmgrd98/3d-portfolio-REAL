@@ -166,8 +166,22 @@ export const projects = [
     {
         iconUrl: pricewise,
         theme: 'btn-back-red',
+        name: 'Generative AI Saas Platform',
+        description: 'Built a full AI platform backed by OpenAI API and ReplicateAI API for text, image, video, music and code generation with Clerk authentication and Stripe integration for payments.',
+        link: 'https://genius-saas-theta.vercel.app/',
+    },
+    {
+        iconUrl: pricewise,
+        theme: 'btn-back-red',
+        name: 'ChatGPT Clone',
+        description: 'ChatGPT clone using the OpenAI API GPT-4 model. Frontend deployed with Vercel and backend with Render.',
+        link: 'https://genius-saas-theta.vercel.app/',
+    },
+    {
+        iconUrl: pricewise,
+        theme: 'btn-back-red',
         name: 'Web3 Crowdfunding Platform',
-        description: 'Developed a web application that tracks and notifies users of price changes for products on Amazon, helping users find the best deals.',
+        description: 'Descentralized web3 crowdfunding dApp inspired by Kickstarter and IndieGoGo. Backed by a Soldity smart contract deployed in the Goerli testnet.',
         link: 'https://web3-crowdfunding-4u1n.vercel.app/',
     },
     {
